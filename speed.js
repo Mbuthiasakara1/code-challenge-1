@@ -2,17 +2,20 @@ function demeritPoints(speed) {
   const speedLimit = 70;
   const kmPerPoint = 5;
 
+  let result;
+
   if (speed < speedLimit) {
-    console.log("Ok");
-    return;
+    result = "Ok";
+  } else {
+    const points = Math.floor((speed - speedLimit) / kmPerPoint);
+    if (points >= 12) {
+      result = "License suspended";
+    } else {
+      result = `Points: ${points}`;
+    }
   }
 
-  const points = Math.floor((speed - speedLimit) / kmPerPoint);
-  if (points >= 12) {
-    console.log("License suspended");
-  } else {
-    console.log(`Points: ${points}`);
-  }
+  document.getElementById("result").textContent = result;
 }
 
 const carSpeed = parseFloat(prompt("Enter the car speed (km/h):"));
