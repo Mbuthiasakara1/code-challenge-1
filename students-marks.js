@@ -15,4 +15,6 @@ function myGrade(mark) {
 
 const studentMark = parseFloat(prompt("Enter the student mark (0-100):"));
 const grade = myGrade(studentMark);
-console.log(`The grade for ${studentMark} is ${grade}.`);
+document.getElementById(
+  "myresult"
+).textContent = `The grade for ${studentMark} is ${grade}.`;
