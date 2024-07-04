@@ -24,23 +24,42 @@ function calculatePAYE(grossSalary) {
 }
 
 function calculateNHIF(grossSalary) {
-  if (grossSalary <= 5999) return 150;
-  else if (grossSalary <= 7999) return 300;
-  else if (grossSalary <= 11999) return 400;
-  else if (grossSalary <= 14999) return 500;
-  else if (grossSalary <= 19999) return 600;
-  else if (grossSalary <= 24999) return 750;
-  else if (grossSalary <= 29999) return 850;
-  else if (grossSalary <= 34999) return 900;
-  else if (grossSalary <= 39999) return 950;
-  else if (grossSalary <= 44999) return 1000;
-  else if (grossSalary <= 49999) return 1100;
-  else if (grossSalary <= 59999) return 1200;
-  else if (grossSalary <= 69999) return 1300;
-  else if (grossSalary <= 79999) return 1400;
-  else if (grossSalary <= 89999) return 1500;
-  else if (grossSalary <= 99999) return 1600;
-  else return 1700;
+  switch (true) {
+    case grossSalary <= 5999:
+      return 150;
+    case grossSalary <= 7999:
+      return 300;
+    case grossSalary <= 11999:
+      return 400;
+    case grossSalary <= 14999:
+      return 500;
+    case grossSalary <= 19999:
+      return 600;
+    case grossSalary <= 24999:
+      return 750;
+    case grossSalary <= 29999:
+      return 850;
+    case grossSalary <= 34999:
+      return 900;
+    case grossSalary <= 39999:
+      return 950;
+    case grossSalary <= 44999:
+      return 1000;
+    case grossSalary <= 49999:
+      return 1100;
+    case grossSalary <= 59999:
+      return 1200;
+    case grossSalary <= 69999:
+      return 1300;
+    case grossSalary <= 79999:
+      return 1400;
+    case grossSalary <= 89999:
+      return 1500;
+    case grossSalary <= 99999:
+      return 1600;
+    default:
+      return 1700;
+  }
 }
 
 function calculateNSSF(grossSalary) {
@@ -65,7 +84,7 @@ function calculateNetSalary(basicSalary, benefits) {
   };
 }
 
-let basicSalary = 80000;
+let basicSalary = 30000;
 let benefits = 10000;
 
 let salaryDetails = calculateNetSalary(basicSalary, benefits);
