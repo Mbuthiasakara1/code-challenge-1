@@ -1,3 +1,5 @@
+const readline = require("readline");
+
 function calculatePAYE(grossSalary) {
   let annualGrossSalary = grossSalary * 12;
   let paye;
@@ -84,12 +86,36 @@ function calculateNetSalary(basicSalary, benefits) {
   };
 }
 
-let basicSalary = 30000;
-let benefits = 10000;
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-let salaryDetails = calculateNetSalary(basicSalary, benefits);
-console.log(`Gross Salary: Ksh ${salaryDetails.grossSalary}`);
-console.log(`PAYE: Ksh ${salaryDetails.paye}`);
-console.log(`NHIF: Ksh ${salaryDetails.nhif}`);
-console.log(`NSSF: Ksh ${salaryDetails.nssf}`);
-console.log(`Net Salary: Ksh ${salaryDetails.netSalary}`);
+rl.question("Enter your basic salary: ", (basicSalaryInput) => {
+  const basicSalary = parseFloat(basicSalaryInput);
+
+  if (isNaN(basicSalary)) {
+    console.log("Invalid input for basic salary. Please enter a number.");
+    rl.close();
+    return;
+  }
+
+  rl.question("Enter your benefits: ", (benefitsInput) => {
+    const benefits = parseFloat(benefitsInput);
+
+    if (isNaN(benefits)) {
+      console.log("Invalid input for benefits. Please enter a number.");
+      rl.close();
+      return;
+    }
+
+    const salaryDetails = calculateNetSalary(basicSalary, benefits);
+    console.log(`\nGross Salary: Ksh ${salaryDetails.grossSalary}`);
+    console.log(`PAYE: Ksh ${salaryDetails.paye}`);
+    console.log(`NHIF: Ksh ${salaryDetails.nhif}`);
+    console.log(`NSSF: Ksh ${salaryDetails.nssf}`);
+    console.log(`Net Salary: Ksh ${salaryDetails.netSalary}`);
+
+    rl.close();
+  });
+});
